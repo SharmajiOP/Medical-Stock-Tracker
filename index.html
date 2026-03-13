@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicine Stock Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<!-- Header -->
+<header>
+	<div class="innerhead">
+	    <h1>Medicine Stock Tracker</h1>
+		<nav>
+		<a href="#inv">Inventory</a>
+		<a href="#request-form">Request Medicine</a>
+		<a href="#log">Request Log</a>
+		</nav>
+	</div>
+</header>
+
+<!-- Main -->
+<main>
+
+<section class="stock-row">
+	<div class="stock-box">
+		<p class="stock-label">Total Medicines</p>
+		<p class="stock-value" id="stock-total">0</p>
+	</div>
+
+	<div class="stock-box">
+		<p class="stock-label">Low Stock</p>
+		<p class="stock-value red" id="stock-low">0</p>
+	</div>
+
+	<div class="stock-box">
+		<p class="stock-label">Total Units</p>
+		<p class="stock-value" id="stock-units">0</p>
+	</div>
+
+	<div class="stock-box">
+		<p class="stock-label">Requests Today</p>
+		<p class="stock-value" id="stock-requests">0</p>
+	</div>
+</section>
+
+<!-- Table -->
+<section class="card" id="inv">
+	<div class="card-top">
+		<h2>Inventory</h2>
+		<input type="text" id="search-input" placeholder="Search medicine">
+	</div>
+
+	<div class="table-med">
+		<table>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Medicine Name</th>
+					<th>Stock Available</th>
+					<th>Expiry Date</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody id="inv-body"></tbody>
+		</table>
+
+	    <p id="no-results" class="empty-text" style="display:none;">No medicines found.</p>
+	</div>
+</section>
+
+<!-- Form -->
+
+<section class="card" id="request-form">
+	<div class="card-top">
+		<h2>Request Medicine</h2>
+	</div>
+
+	<div class="form-section">
+		<div class="form-row">
+			<div class="field">
+				<label for="empname">Employee Name</label>
+				<input type="text" id="empname" placeholder="Enter your name">
+				<span class="errmsg" id="erremp">Employee name cannot be empty.</span>
+			</div>
+
+			<div class="field">
+				<label for="medselect">Medicine Name</label>
+				<select id="medselect">
+				<option value="">-- Select Medicine --</option>
+				</select>
+				<span class="errmsg" id="errmed">Please select a medicine.</span>
+			</div>
+	</div>
+
+	<div class="form-row">
+		<div class="field">
+		<label for="quantity">Quantity</label>
+		<input type="number" id="quantity" min="1" placeholder="Enter quantity">
+		<span class="errmsg" id="errqty">Quantity must be greater than 0.</span>
+		</div>	
+
+		<div class="field">
+			<label for="reason">Reason</label>
+			<input type="text" id="reason" placeholder="Reason for request">
+		</div>
+	</div>
+
+		<div class="form-buttons">
+			<button id="submit-btn">Submit Request</button>
+			<button id="reset-btn" class="secondary">Clear</button>
+		</div>
+
+	</div>
+</section>
+
+<section class="card" id="log">
+	<div class="card-top">
+		<h2>Request Log</h2>
+	</div>
+
+	<div class="table-med">
+		<table>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Employee</th>
+					<th>Medicine</th>
+					<th>Quantity</th>
+					<th>Reason</th>
+					<th>Date & Time</th>
+				</tr>
+			</thead>
+
+			<tbody id="log-body"></tbody>
+		</table>
+
+		<p id="empty-log" class="empty-text">No requests submitted yet.</p>
+	</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+<p>&copy; <span id="year"></span> MedCorp Healthcare Pvt. Ltd.</p>
+</footer>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
